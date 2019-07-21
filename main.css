@@ -1,0 +1,21 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #dee;
+}
+
+canvas {
+    border: 1px solid rgb(169, 209, 209);
+    display: block;
+    position: relative;
+    margin: 20px auto;
+    background: radial-gradient(circle, #d0f5fa 0%, #a4cfd6 100%);
+}
+
+#score {
+    font-weight: bold;
+    color: #d22;
+    font-size: 40px;
+    text-align: center;
+    margin: 20px 0;
+}
