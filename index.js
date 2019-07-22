@@ -12,7 +12,7 @@ class Snake {
     draw() {
         this.body.forEach((el, index) => {
             if (index == 0) {
-                this.ctx.drawImage(this.snakeHeadImg, el[0] - 2, el[1] - 2, 14, 14)
+                this.ctx.drawImage(this.snakeHeadImg, el[0] - 1, el[1] - 1, 12, 12)
             } else {
                 this.ctx.drawImage(this.snakeBodyImg, el[0], el[1], 10, 10)
             }
@@ -83,7 +83,7 @@ class Meel {
 
     draw() {
         this.ctx.fillStyle = "rgb(250,0,0)"
-        this.ctx.drawImage(this.appleImg, this.meel[0] - 2, this.meel[1] - 2 , 14, 14)
+        this.ctx.drawImage(this.appleImg, this.meel[0] - 1, this.meel[1] - 1 , 12, 12)
     }
 
     generateNewMeel() {
