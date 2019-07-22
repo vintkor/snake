@@ -5,12 +5,17 @@ class Snake {
         this.head = [22, 0]
         this.body = [[22, 0], [11, 0], [0, 0]]
         this.direction = 'ArrowRight'
+        this.snakeHeadImg = document.getElementById('img_snake_head')
+        this.snakeBodyImg = document.getElementById('img_snake_body')
     }
 
     draw() {
-        this.body.forEach(el => {
-            this.ctx.fillStyle = "rgb(50,50,50)"
-            this.ctx.fillRect(el[0], el[1], 10, 10)
+        this.body.forEach((el, index) => {
+            if (index == 0) {
+                this.ctx.drawImage(this.snakeHeadImg, el[0] - 2, el[1] - 2, 14, 14)
+            } else {
+                this.ctx.drawImage(this.snakeBodyImg, el[0], el[1], 10, 10)
+            }
         })
     }
 
@@ -73,11 +78,12 @@ class Meel {
         this.meel = []
         this.ctx = canvas.getContext('2d')
         this.generateNewMeel()
+        this.appleImg = document.getElementById('img_apple')
     }
 
     draw() {
         this.ctx.fillStyle = "rgb(250,0,0)"
-        this.ctx.fillRect(this.meel[0], this.meel[1], 10, 10)
+        this.ctx.drawImage(this.appleImg, this.meel[0] - 2, this.meel[1] - 2 , 14, 14)
     }
 
     generateNewMeel() {
@@ -92,7 +98,7 @@ class Meel {
 
 class Game {
     constructor() {
-        this.keyCodes = ["ArrowUp", "ArrowDown", "ArrowRight", "ArrowLeft"]
+        this.keyCodes = ["ArrowUp", "ArrowDown", "ArrowRight", "ArrowLeft", "Space"]
         this.speed = 5
         this.score = 0
         this.scorePlace = document.getElementById('score')
@@ -102,6 +108,7 @@ class Game {
         this.meel = new Meel(this.canvas)
         this.eventListener()
         this.loop = null
+        this.pause = false
     }
 
     addScore() {
@@ -133,9 +140,23 @@ class Game {
         }, 1000 / this.speed);
     }
 
+    pauseSwitcher() {
+        this.pause = !this.pause
+        if (this.pause) clearInterval(this.loop)
+        else this.run()
+    }
+
     keyboardHandle(self, event) {
-        if (self.keyCodes.includes(event.code))
-            self.snake.changeDirection(event.code)
+        const eventCode = event.code
+        if (self.keyCodes.includes(eventCode)) {
+            if (eventCode == 'Space') {
+                self.pauseSwitcher()
+            }
+            else {
+                self.snake.changeDirection(event.code)
+            }
+        }
+            
     }
 
     eventListener() {
