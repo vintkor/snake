@@ -16,15 +16,27 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-    <div class="score">
-        Ваш счёт - 
-        <span id="score">0</span>
+    <h1>Червячёк Анюта</h1>
+    <div class="levels">
+        <div>Уровень <span id="level">1</span></div>
+        <div class="score">
+            Ваш счёт -
+            <span id="score">0</span>
+        </div>
+        <div id="hearts">
+            <img class="img_heart" src="images/heart.svg">
+            <img class="img_heart" src="images/heart.svg">
+            <img class="img_heart" src="images/heart.svg">
+        </div>
     </div>
     <canvas id="game" width="440" height="440"></canvas>
     <div style="display:none;">
         <img id="img_apple" src="images/apple.svg">
         <img id="img_snake_head" src="images/snake_head2.svg">
         <img id="img_snake_body" src="images/snake_body2.svg">
+        <img id="img_heart" src="images/heart.svg">
+        <img id="img_mushroom" src="images/mushroom.svg">
+        <img id="img_game_over" src="images/game_over.png">
     </div>
     <script src="index.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">

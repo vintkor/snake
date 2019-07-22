@@ -19,12 +19,47 @@ canvas {
     display: block;
     position: relative;
     margin: 30px auto;
-    background: rgba(255, 255, 255, 0.12);
+    background: rgb(110, 185, 228);
 }
 
-.score {
+
+.levels {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
     color: #272727;
     text-shadow: 0 0 8px #fff;
     font-family: 'Lobster', cursive;
-    font-size: 60px;
+    font-size: 30px;
+}
+
+.levels div {
+    padding: 0 20px;
+}
+
+#hearts {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.img_heart {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    opacity: .3;
+    filter: grayscale(1);
+    margin: 0 5px;
+}
+
+.img_heart.visible {
+    opacity: 1;
+    filter: grayscale(0)
+}
+
+h1 {
+    font-family: 'Lobster', cursive;
+    font-size: 50px;
+    color: rgb(212, 48, 159);
+    text-shadow: 0 0 8px #fff;
+    margin-bottom: 0;
 }
