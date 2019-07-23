@@ -12,6 +12,11 @@ class Snake {
         this.drawHearts()
         this.goodMeelAudio = new Audio('sounds/good_meel.mp3')
         this.badMeelAudio = new Audio('sounds/bad_meel.mp3')
+        this.applesCounter = 0
+    }
+
+    clearSnake() {
+        this.body = this.body.slice(0, 3)
     }
 
     drawHearts() {
@@ -73,6 +78,7 @@ class Snake {
                 game.chageSpeed()
                 this.goodMeelAudio.volume = .99
                 this.goodMeelAudio.play()
+                this.applesCounter ++
             } else if (meel instanceof Mushroom) {
                 for (let i = 0; i < this.hearts.length; i++) {
                     if (this.hearts[i]) {
@@ -146,7 +152,7 @@ class Mushroom {
 class Game {
     constructor() {
         this.keyCodes = ["ArrowUp", "ArrowDown", "ArrowRight", "ArrowLeft", "Space"]
-        this.speed = 5
+        this.speed = 10
         this.score = 0
         this.scorePlace = document.getElementById('score')
         this.canvas = document.getElementById('game')
@@ -158,6 +164,13 @@ class Game {
         this.loop = null
         this.pause = false
         this.isGameOver = false
+        this.level = 1
+        this.drawLevel()
+    }
+
+    drawLevel() {
+        const levelPlace = document.getElementById('level')
+        levelPlace.innerText = this.level
     }
 
     addScore() {
@@ -202,7 +215,18 @@ class Game {
                 this.snake.eat(this.meel, this)
                 this.snake.eat(this.mushroom, this)
                 this.chekeSnakeHeart()
+                this.checkLevel()
             }, 1000 / this.speed);
+        }
+    }
+
+    checkLevel() {
+        if (this.snake.applesCounter >= 5) {
+            this.level ++
+            this.snake.applesCounter = 0
+            this.snake.clearSnake()
+            this.drawLevel()
+            this.chageSpeed()
         }
     }
 
