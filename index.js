@@ -152,7 +152,7 @@ class Mushroom {
 class Game {
     constructor() {
         this.keyCodes = ["ArrowUp", "ArrowDown", "ArrowRight", "ArrowLeft", "Space"]
-        this.speed = 3
+        this.speed = 5
         this.score = 0
         this.scorePlace = document.getElementById('score')
         this.canvas = document.getElementById('game')
