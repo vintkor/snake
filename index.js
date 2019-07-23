@@ -152,7 +152,7 @@ class Mushroom {
 class Game {
     constructor() {
         this.keyCodes = ["ArrowUp", "ArrowDown", "ArrowRight", "ArrowLeft", "Space"]
-        this.speed = 10
+        this.speed = 3
         this.score = 0
         this.scorePlace = document.getElementById('score')
         this.canvas = document.getElementById('game')
@@ -178,7 +178,7 @@ class Game {
     }
 
     chageSpeed() {
-        this.speed += .5
+        this.speed += .2
         clearInterval(this.loop)
         this.run()
     }
@@ -221,7 +221,7 @@ class Game {
     }
 
     checkLevel() {
-        if (this.snake.applesCounter >= 5) {
+        if (this.snake.applesCounter >= 30) {
             this.level ++
             this.snake.applesCounter = 0
             this.snake.clearSnake()
